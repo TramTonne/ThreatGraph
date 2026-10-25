@@ -1,0 +1,20 @@
+{
+  "nodes": [
+    {"id": "alice", "type": "user"},
+    {"id": "laptop", "type": "device"},
+    {"id": "app", "type": "server"},
+    {"id": "customer-db", "type": "asset"},
+    {"id": "backup", "type": "asset"}
+  ],
+  "edges": [
+    {"id": "login", "source": "alice", "target": "laptop"},
+    {"id": "ssh", "source": "laptop", "target": "app"},
+    {"id": "db-read", "source": "app", "target": "customer-db"},
+    {"id": "session", "source": "app", "target": "laptop"}
+  ],
+  "compromised_nodes": ["alice"],
+  "simulations": [
+    {"id": "revoke-db", "remove_edges": ["db-read"]},
+    {"id": "isolate-laptop", "remove_edges": ["ssh"]}
+  ]
+}

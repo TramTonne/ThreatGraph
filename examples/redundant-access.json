@@ -1,0 +1,16 @@
+{
+  "nodes": [
+    {"id": "user", "type": "user"},
+    {"id": "server-a", "type": "server"},
+    {"id": "server-b", "type": "server", "sensitive": true},
+    {"id": "vault", "type": "asset"}
+  ],
+  "edges": [
+    {"id": "a", "source": "user", "target": "server-a"},
+    {"id": "b", "source": "user", "target": "server-b"},
+    {"id": "c", "source": "server-a", "target": "vault"},
+    {"id": "d", "source": "server-b", "target": "vault"}
+  ],
+  "compromised_nodes": ["user", "server-b"],
+  "simulations": [{"id": "revoke-one-route", "remove_edges": ["c"]}]
+}
