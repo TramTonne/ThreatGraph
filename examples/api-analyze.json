@@ -1,0 +1,15 @@
+{
+  "nodes": [
+    {"id": "alice", "type": "user"},
+    {"id": "laptop", "type": "device"},
+    {"id": "app", "type": "server"},
+    {"id": "customer-db", "type": "asset"}
+  ],
+  "edges": [
+    {"id": "login", "source": "alice", "target": "laptop"},
+    {"id": "ssh", "source": "laptop", "target": "app"},
+    {"id": "db-read", "source": "app", "target": "customer-db"}
+  ],
+  "compromised_node": "alice",
+  "simulations": [{"id": "revoke-db", "remove_edges": ["db-read"]}]
+}
